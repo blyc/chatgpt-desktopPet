@@ -2,7 +2,6 @@ const { app, Menu, Tray } = require('electron')
 const createSettingShow = require('../windows/setting')
 const dialog = require('electron').dialog
 const path = require('path')
-const { refresh } = require("electron-as-wallpaper");
 
 // 系统托盘全局对象
 let appTray = null
@@ -42,10 +41,6 @@ function createTrayMenu() {
                 }).then((res) => {
 
                     if (res.response == 1) {
-                        // 清除动态壁纸
-                        if (global.wallpaperHandle) global.wallpaperHandle.close()
-                        refresh()
-
                         // 禁用点击托盘图标
                         appTray.setContextMenu(null);
                         app.quit()

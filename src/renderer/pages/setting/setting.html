@@ -7,7 +7,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>设置</title>
   <link rel="stylesheet" href="./setting.css">
-  <link rel="stylesheet" href="../../style/popup.css">
   <link rel="stylesheet" href="../../style/message.css">
 </head>
 
@@ -32,20 +31,20 @@
 
         <div class="container_box">
           <span>作者</span>
-          <span>小埋iwn、dullwolf蠢狼</span>
+          <span>洛零一</span>
         </div>
 
         <div class="container_box">
-          <span>live2d画师</span>
-          <span>Candya</span>
+          <span>鸣谢/源作者</span>
+          <span>小埋iwn、dullwolf蠢狼</span>
         </div>
 
         <div class="setting_bottom">
           <h3>留言反馈</h3>
-          <textarea class="feedback" id="feedback_content" cols="30" rows="10" placeholder="在这里提出可以提出您的建议哦"></textarea>
+          <textarea class="feedback" id="feedback_content" cols="30" rows="10" placeholder="在这里提出可以提出您的建议哦【暂不可用】" readonly></textarea>
           <div class="word_count">已输入<span id="wordCount">0</span>个字</div>
-          <div class="clear_text" id="clear_text">清空内容</div>
-          <div class="feedback_commit" id="feedback_button">匿名提交</div>
+          <div class="clear_text" id="clear_text" style="display: none">清空内容</div>
+          <div class="feedback_commit" id="feedback_button" style="display: none">匿名提交</div>
         </div>
       </div>
     </div>
@@ -64,7 +63,7 @@
         </div>
 
         <div class="container_box">
-          <span>秋蒂直播通知</span>
+          <span>绘绘直播通知</span>
           <label class="switch">
             <input type="checkbox" id="liveNotification">
             <span class="slider round"></span>
@@ -94,17 +93,17 @@
 
         <div class="container_box">
           <span>X轴方向平移</span>
-          <input id="xAxis" type="text" class="inputText" value="0">
+          <input id="xAxis" type="text" class="inputText" value="20">
         </div>
 
         <div class="container_box">
           <span>Y轴方向平移</span>
-          <input id="yAxis" type="text" class="inputText" value="60">
+          <input id="yAxis" type="text" class="inputText" value="120">
         </div>
         
         <div class="container_box">
           <span>缩放比例</span>
-          <input id="scaling" type="text" class="inputText" value="0.15">
+          <input id="scaling" type="text" class="inputText" value="0.2">
         </div>
 
         <div class="setting_bottom">
@@ -123,5 +122,4 @@
 </html>
 
 <script src="../../utils/message.js"></script>
-<script src="../../utils/popup.js"></script>
 <script src="./setting.js"></script>

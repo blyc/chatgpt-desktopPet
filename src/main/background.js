@@ -3,14 +3,8 @@ const createWindow = require('./windows/mainWindow')
 const createTrayMenu = require('./modules/tray')
 const createSettingShow = require('./windows/setting')
 const createScheduleShow = require('./windows/schedule')
-const createChattingShow = require('./windows/chatting')
-const createWallpaper = require('./windows/wallpaper')
-const createCommunityShow = require('./windows/community')
-const createSpeechSynthesisShow = require('./windows/speechSynthesis')
 const createHoverBox = require('./windows/hoverbox')
 const { liveNotify } = require('./modules/liveNotify')
-require('./modules/handle')
-const wallpaper = require('wallpaper')
 
 // 解决使用win.hide()再使用win.show()会引起窗口闪烁问题
 app.commandLine.appendSwitch('wm-window-animations-disabled')
@@ -19,6 +13,7 @@ app.commandLine.appendSwitch('wm-window-animations-disabled')
 if (process.env.NODE_ENV === 'development') {
   try {
     require('electron-reloader')(module)
+    require('electron-debug')({ showDevTools: true });
   } catch (_) { }
 }
 
@@ -125,75 +120,6 @@ ipcMain.on('Schedule', (event, arg) => {
   }
 })
 
-// ipc监听，打开chat聊天窗口
-ipcMain.on('Chatting', (event, arg) => {
-  if (arg === 'Open') {
-    if (global.chatting == null || global.chatting.isDestroyed()) {
-      global.chatting = createChattingShow()
-    }
-  }
-
-  if (arg == 'minimize-window') {
-    global.chatting.minimize()
-  }
-
-  if (arg == 'maximize-window') {
-    if (global.chatting.isMaximized()) {
-      global.chatting.unmaximize()
-    } else {
-      global.chatting.maximize()
-    }
-  }
-
-  if (arg == 'close-window') {
-    global.chatting.close()
-  }
-})
-
-// ipc监听，打开壁纸窗口
-ipcMain.on('Wallpaper', (event, arg) => {
-  if (arg == 'Open') {
-    if (global.wallpaper == null || global.wallpaper.isDestroyed()) {
-      global.wallpaper = createWallpaper()
-    }
-  }
-
-  if (arg == 'minimize-window') {
-    global.wallpaper.minimize()
-  }
-
-  if (arg == 'maximize-window') {
-    if (global.wallpaper.isMaximized()) {
-      global.wallpaper.unmaximize()
-    } else {
-      global.wallpaper.maximize()
-    }
-  }
-
-  if (arg == 'close-window') {
-    global.wallpaper.close()
-  }
-
-})
-
-// ipc监听，打开社区窗口
-ipcMain.on('Community', (event, arg) => {
-  if (arg == 'Open') {
-    if (global.community == null || global.community.isDestroyed()) {
-      global.community = createCommunityShow()
-    }
-  }
-})
-
-// ipc监听，打开VITS语音合成窗口
-ipcMain.on('speechSynthesis', (event, arg) => {
-  if (arg == 'Open') {
-    if (global.speechSynthesis == null || global.speechSynthesis.isDestroyed()) {
-      global.speechSynthesis = createSpeechSynthesisShow()
-    }
-  }
-})
-
 // ipc监听，显示悬浮球
 ipcMain.on('hoverBox', (event, data) => {
   if (data == 'Open') {
@@ -239,16 +165,6 @@ ipcMain.on('toggle_power', (event, enabled) => {
 ipcMain.on('liveNotify', () => {
   liveNotify()
 });
-
-// ipc监听，设置桌面静态壁纸
-ipcMain.on('set-wallpaper', (_, arg) => {
-  setWallpaper(arg)
-})
-
-function setWallpaper(wallpaperFile) {
-  wallpaper.set(wallpaperFile)
-}
-
 
 // 当Electron完成时，将调用此方法
 // 初始化，并准备创建浏览器窗口。

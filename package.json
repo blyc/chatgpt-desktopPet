@@ -1,6 +1,6 @@
 {
-  "name": "chatgpt-desktoppet",
-  "version": "1.3.0",
+  "name": "huihui-desktoppet",
+  "version": "0.0.1",
   "description": "DesktopPet Electron",
   "main": "./src/main/background.js",
   "scripts": {
@@ -15,10 +15,9 @@
   },
   "keywords": [
     "electron",
-    "chatgpt",
     "live2d"
   ],
-  "author": "kirbystudy, dullwolf",
+  "author": "洛零一",
   "license": "BSD 2-Clause",
   "devDependencies": {
     "@electron/remote": "^2.0.9",
@@ -29,13 +28,13 @@
   },
   "dependencies": {
     "@electron/remote": "^2.0.9",
-    "electron-as-wallpaper": "^1.0.3",
+    "electron-debug": "^3.2.0",
     "electron-store": "^8.1.0",
     "node-notifier": "^10.0.1",
     "wallpaper": "^5.0.1"
   },
   "build": {
-    "productName": "秋蒂桌宠",
+    "productName": "绘绘桌宠",
     "appId": "com.disktoppet",
     "asar": true,
     "directories": {
@@ -69,7 +68,7 @@
       "installerHeaderIcon": "./assets/app_256.ico",
       "createDesktopShortcut": true,
       "createStartMenuShortcut": true,
-      "shortcutName": "秋蒂桌宠"
+      "shortcutName": "绘绘桌宠"
     },
     "extends": null
   }

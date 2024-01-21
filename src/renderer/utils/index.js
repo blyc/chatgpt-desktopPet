@@ -71,22 +71,6 @@ window.onload = function () {
     ipcRenderer.send('Schedule', 'Open')
   })
 
-  chatting.addEventListener('click', () => {
-    ipcRenderer.send('Chatting', 'Open')
-  })
-
-  wallpaper.addEventListener('click', () => {
-    ipcRenderer.send('Wallpaper', 'Open')
-  })
-
-  community.addEventListener('click', () => {
-    ipcRenderer.send('Community', 'Open')
-  })
-
-  speechSynthesis.addEventListener('click', () => {
-    ipcRenderer.send('speechSynthesis', 'Open')
-  })
-
   hide.addEventListener('click', () => {
     showMessage("右下角有悬浮小球哦~", 3000, true)
     setTimeout(() => {
@@ -104,18 +88,10 @@ window.onload = function () {
     item.addEventListener('mouseover', (event) => {
       if (event.target.innerText == '日程') {
         debounce(() => showMessage('要打开日程表吗?', 1500, true))
-      } else if (event.target.innerText == '聊天') {
-        debounce(() => showMessage('要打开聊天吗?', 1500, true))
       } else if (event.target.innerText == '关于') {
         debounce(() => showMessage('要打开设置吗?', 1500, true))
       } else if (event.target.innerText == '隐藏') {
         debounce(() => showMessage('要隐藏模型吗?', 1500, true))
-      } else if (event.target.innerText == '壁纸') {
-        debounce(() => showMessage('要打开壁纸吗?', 1500, true))
-      } else if (event.target.innerText == '语音') {
-        debounce(() => showMessage('要打开语音吗?', 1500, true))
-      } else if (event.target.innerText == '社区') {
-        debounce(() => showMessage('要打开社区吗?', 1500, true))
       }
     })
   })
@@ -246,8 +222,8 @@ function setupLiveNotify() {
   // 启动定时器
   const startTimer = () => {
     if (intervalId === null) {
-      // 使用 setInterval 函数每隔 5分钟 调用 queryLiveNotify 函数
-      intervalId = setInterval(queryLiveNotify, 300000)
+      // 使用 setInterval 函数每隔 3 分钟 调用 queryLiveNotify 函数
+      intervalId = setInterval(queryLiveNotify, 3 * 60 * 1000)
     }
   }
 
